@@ -16,7 +16,9 @@
 
     <mvc:annotation-driven />
     
-
+    <mvc:interceptors>
+      <bean class="br.com.amazingbooks.util.LoginInterceptor" />
+    </mvc:interceptors> 
     
     <context:component-scan base-package="br.com.amazingbooks.controller"/>
     

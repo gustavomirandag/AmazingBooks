@@ -1,6 +1,6 @@
 package br.com.amazingbooks.controller;
-import br.com.amazingbooks.dao.PessoasDao;
-import br.com.amazingbooks.model.Pessoa;
+import br.com.amazingbooks.dao.UsuariosDao;
+import br.com.amazingbooks.model.Usuario;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +20,11 @@ public class LoginController {
             @RequestParam String senha, 
             HttpSession session){
         
-        Pessoa pessoa = PessoasDao.obterPessoa(email);
+        Usuario usuario = UsuariosDao.obterUsuario(email);
         
-        if (pessoa != null && pessoa.getSenha().equals(senha)){
+        if (usuario != null && usuario.getSenha().equals(senha)){
             session.setAttribute("email", email);
-            return "redirect:/";
+            return "redirect:/home";
         }
 
         session.setAttribute("status", "Usuário ou senha inválida!");
